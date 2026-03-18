@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap");
+
+@import "tailwindcss";
+
+/* ── Tailwind v4 theme ─────────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-gold-light: #EBD060;
+  --color-gold:       #D39C16;
+  --color-gold-dark:  #B8860B;
+  --color-cream:      #FAF6F0;
+  --color-charcoal:   #1A1A1A;
+
+  /* Font families */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, sans-serif;
+  --font-arabic:  "Noto Sans Arabic", system-ui, sans-serif;
+
+  /* Animations */
+  --animate-float:    float 6s ease-in-out infinite;
+  --animate-fade-in:  fadeIn 0.8s ease forwards;
+  --animate-blob:     blobMorph 8s ease-in-out infinite;
+}
+
+/* ── Base reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background-color: #ffffff;
+  color: #1A1A1A;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* RTL */
+[dir="rtl"] { font-family: "Noto Sans Arabic", system-ui, sans-serif; }
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: #f8f8f8; }
+::-webkit-scrollbar-thumb { background: #D39C16; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #B8860B; }
+
+/* ── Selection ─────────────────────────────────────────────────── */
+::selection { background: #EBD060; color: #000; }
+
+/* ── Gold gradient text ────────────────────────────────────────── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #EBD060, #D39C16);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Smooth scroll (Lenis) ─────────────────────────────────────── */
+html.lenis,
+html.lenis body        { height: auto; }
+.lenis.lenis-smooth    { scroll-behavior: auto !important; }
+.lenis.lenis-stopped   { overflow: hidden; }
+
+/* ── Page enter animation ──────────────────────────────────────── */
+.page-enter {
+  animation: pageEnter 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Blob ──────────────────────────────────────────────────────── */
+.blob-animate { animation: blobMorph 8s ease-in-out infinite; }
+@keyframes blobMorph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+/* ── Float ─────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+/* ── Fade in ───────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Line clamp utilities ──────────────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Product card glow ─────────────────────────────────────────── */
+.product-card-glow:hover {
+  box-shadow: 0 8px 40px rgba(211, 156, 22, 0.18);
+}
+
+/* ── Hide scrollbar ────────────────────────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
