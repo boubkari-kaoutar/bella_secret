@@ -18,11 +18,37 @@ export default function ShopPage() {
   const locale = (params?.locale as string) || "fr";
   const [activeCategory, setActiveCategory] = useState("Tout");
 
-  const categoryLabels = [t("all"), t("filter_visage"), t("filter_corps"), t("filter_hammam")];
+  const filterMappings: Record<string, string> = {
+    "Tout": t("all"),
+    "Corps": t("filter_corps"),
+    "Visage": t("filter_visage"),
+    "Soins intimes": t("filter_intimes"),
+    "Cheveux": t("filter_cheveux"),
+    "Bain & Hammam": t("filter_hammam"),
+    "Mains & Pieds": t("filter_mains"),
+    "Soins thérapeutiques": t("filter_therapeutiques"),
+    "Coffrets & Cadeaux": t("filter_coffrets"),
+    "Décor & Accessoires": t("filter_decor"),
+    "Ambiance & Senteurs": t("filter_ambiance"),
+  };
 
   const filtered = activeCategory === "Tout"
     ? products
     : products.filter((p) => p.category === activeCategory);
+
+  const getButtonStyle = (value: string) => ({
+    flexShrink: 0,
+    padding: "7px 16px",
+    borderRadius: "999px",
+    fontSize: "12px",
+    fontWeight: 600,
+    border: activeCategory === value ? "1.5px solid #EBD060" : "1.5px solid #e5e7eb",
+    backgroundColor: activeCategory === value ? "#EBD060" : "transparent",
+    color: activeCategory === value ? "#000" : "#6B7280",
+    cursor: "pointer",
+    transition: "all 0.2s",
+    letterSpacing: "0.03em",
+  });
 
   return (
     <div>
@@ -41,29 +67,40 @@ export default function ShopPage() {
         boxShadow: "0 1px 8px rgba(0,0,0,0.06)",
       }}>
         <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", padding: "12px 0", overflowX: "auto" }}>
-            <SlidersHorizontal size={15} color="#9CA3AF" style={{ flexShrink: 0, marginRight: "4px" }} />
-            {CATEGORY_VALUES.map((value, i) => (
-              <button
-                key={value}
-                onClick={() => setActiveCategory(value)}
-                style={{
-                  flexShrink: 0,
-                  padding: "7px 16px",
-                  borderRadius: "999px",
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  border: activeCategory === value ? "1.5px solid #EBD060" : "1.5px solid #e5e7eb",
-                  backgroundColor: activeCategory === value ? "#EBD060" : "transparent",
-                  color: activeCategory === value ? "#000" : "#6B7280",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                  letterSpacing: "0.03em",
-                }}
-              >
-                {categoryLabels[i]}
+          <div style={{ display: "flex", alignItems: "center", gap: "24px", padding: "12px 0", overflowX: "auto", scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            <style>{`
+              div::-webkit-scrollbar { display: none; }
+            `}</style>
+            
+            {/* All */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+              <SlidersHorizontal size={15} color="#9CA3AF" />
+              <button onClick={() => setActiveCategory("Tout")} style={getButtonStyle("Tout")}>
+                {filterMappings["Tout"]}
               </button>
-            ))}
+            </div>
+
+            {/* Soins de beauté */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0, borderLeft: "1px solid #e5e7eb", paddingLeft: "24px" }}>
+              <span style={{ fontSize: "11px", fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.05em", marginRight: "4px" }}>
+                {t("group_beaute")}
+              </span>
+              {["Corps", "Visage", "Soins intimes", "Cheveux", "Bain & Hammam", "Mains & Pieds"].map((c) => (
+                <button key={c} onClick={() => setActiveCategory(c)} style={getButtonStyle(c)}>
+                  {filterMappings[c]}
+                </button>
+              ))}
+            </div>
+
+            {/* Others */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0, borderLeft: "1px solid #e5e7eb", paddingLeft: "24px" }}>
+              {["Soins thérapeutiques", "Coffrets & Cadeaux", "Décor & Accessoires", "Ambiance & Senteurs"].map((c) => (
+                <button key={c} onClick={() => setActiveCategory(c)} style={getButtonStyle(c)}>
+                  {filterMappings[c]}
+                </button>
+              ))}
+            </div>
+            
           </div>
         </div>
       </div>

@@ -248,6 +248,38 @@ export default function AboutPage() {
           </AnimatedButton>
         </div>
       </section>
+
+      {/* Future */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2
+            className="text-3xl sm:text-4xl font-bold text-black mb-6"
+            style={{ fontFamily: "Playfair Display, serif" }}
+          >
+            {t("future_title")}{" "}
+            <span className="text-[#D39C16]">{t("future_highlight")}</span>
+          </h2>
+          <p className="text-gray-600 text-lg leading-relaxed">
+            {t("future_text")}
+          </p>
+        </div>
+      </section>
+
+      {/* Treasures */}
+      <section className="py-20 bg-[#FAF6F0]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2
+            className="text-3xl sm:text-4xl font-bold text-black mb-6"
+            style={{ fontFamily: "Playfair Display, serif" }}
+          >
+            {t("treasures_title")}{" "}
+            <span className="text-[#D39C16]">{t("treasures_highlight")}</span>
+          </h2>
+          <p className="text-gray-600 text-lg leading-relaxed">
+            {t("treasures_text")}
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

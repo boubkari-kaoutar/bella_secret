@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/lib/data";
 
@@ -52,78 +53,119 @@ export default function BlogPage() {
       </section>
 
       {/* Articles */}
-      <section style={{ padding: "56px 0", backgroundColor: "#FAF6F0" }}>
-        <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-
-          {/* Featured article */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            style={{ marginBottom: "32px", backgroundColor: "#fff", borderRadius: "24px", overflow: "hidden", border: "1px solid #f0f0f0", display: "grid", gridTemplateColumns: "1fr" }}
-            className="lg:grid-cols-2 lg:!grid"
-          >
-            <div style={{ position: "relative", minHeight: "260px" }}>
-              <Image src={posts[0].image} alt={posts[0].displayTitle} fill className="object-cover" />
-            </div>
-            <div style={{ padding: "36px 32px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <span style={{ display: "inline-block", background: "rgba(235,208,96,0.15)", color: "#D39C16", fontSize: "11px", fontWeight: 700, padding: "4px 12px", borderRadius: "999px", marginBottom: "16px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                {posts[0].displayCategory}
-              </span>
-              <h2 style={{ fontFamily: "Playfair Display, serif", fontSize: "clamp(1.4rem, 3vw, 1.9rem)", fontWeight: 700, color: "#000", lineHeight: 1.25, marginBottom: "12px" }}>
-                {posts[0].displayTitle}
-              </h2>
-              <p style={{ color: "#6B7280", fontSize: "14px", lineHeight: 1.7, marginBottom: "20px" }}>
-                {posts[0].displayExcerpt}
-              </p>
-              <div style={{ display: "flex", gap: "20px", color: "#9CA3AF", fontSize: "12px", marginBottom: "24px" }}>
-                <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                  <Calendar size={13} />{posts[0].displayDate}
-                </span>
-                <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                  <Clock size={13} />{posts[0].displayReadTime}
-                </span>
-              </div>
-              <button style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#000", background: "none", border: "none", cursor: "pointer", padding: 0 }}>
-                {t("readMore")} <ArrowRight size={15} />
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Other articles */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
-            {posts.slice(1).map((post, i) => (
-              <motion.article
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                style={{ backgroundColor: "#fff", borderRadius: "20px", overflow: "hidden", border: "1px solid #f0f0f0", cursor: "pointer", transition: "box-shadow 0.3s" }}
-                whileHover={{ boxShadow: "0 8px 32px rgba(211,156,22,0.12)", y: -4 }}
+      <section className="py-16 md:py-24 bg-[#FAF6F0]">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-10 md:gap-14 items-center">
+          
+          {/* Featured Card (Full Width) */}
+          {posts.length > 0 && (
+            <div className="w-full">
+              <Link 
+                href={`/${locale}/blog/${posts[0].slug}`} 
+                className="block text-decoration-none"
               >
-                <div style={{ position: "relative", height: "200px" }}>
-                  <Image src={post.image} alt={post.displayTitle} fill className="object-cover" />
-                  <div style={{ position: "absolute", top: "12px", left: "12px" }}>
-                    <span style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)", color: "#fff", fontSize: "10px", fontWeight: 600, padding: "4px 10px", borderRadius: "999px" }}>
-                      {post.displayCategory}
-                    </span>
-                  </div>
-                </div>
-                <div style={{ padding: "20px" }}>
-                  <h3 style={{ fontFamily: "Playfair Display, serif", fontSize: "1rem", fontWeight: 700, color: "#000", marginBottom: "10px", lineHeight: 1.3 }}>
-                    {post.displayTitle}
-                  </h3>
-                  <p style={{ color: "#6B7280", fontSize: "13px", lineHeight: 1.6, marginBottom: "14px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" as const, overflow: "hidden" }}>
-                    {post.displayExcerpt}
-                  </p>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", color: "#9CA3AF", fontSize: "11px" }}>
-                    <div style={{ display: "flex", gap: "12px" }}>
-                      <span style={{ display: "flex", alignItems: "center", gap: "4px" }}><Calendar size={11} />{post.displayDate}</span>
-                      <span style={{ display: "flex", alignItems: "center", gap: "4px" }}><Clock size={11} />{post.displayReadTime}</span>
+                <motion.article
+                  initial={{ opacity: 0, y: 20 }} 
+                  whileInView={{ opacity: 1, y: 0 }} 
+                  viewport={{ once: true }}
+                  className="group relative w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500"
+                >
+                  <Image 
+                    src={posts[0].image} 
+                    alt={posts[0].displayTitle} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+
+                  <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end" dir={isAr ? "rtl" : "ltr"}>
+                    <div className={`absolute top-6 ${isAr ? "left-6" : "right-6"}`}>
+                      <span className="bg-black/40 backdrop-blur-md text-white/90 text-[10px] md:text-[11px] font-bold px-4 py-2 rounded-full uppercase tracking-widest border border-white/10">
+                        {posts[0].displayCategory}
+                      </span>
                     </div>
-                    <ArrowRight size={13} color="#D39C16" />
+
+                    <div className="relative z-10 w-full md:w-3/4 lg:w-2/3">
+                      <div className="flex items-center gap-4 text-white/80 text-[11px] md:text-[12px] font-semibold tracking-[0.2em] uppercase mb-4">
+                        <span className="flex items-center gap-2"><Calendar size={13} /> {posts[0].displayDate}</span>
+                        <span className="w-1 h-1 rounded-full bg-white/50" />
+                        <span className="flex items-center gap-2"><Clock size={13} /> {posts[0].displayReadTime}</span>
+                      </div>
+                      <h3 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.15] font-bold mb-4 drop-shadow-md" style={{ fontFamily: "Playfair Display, serif" }}>
+                        {posts[0].displayTitle}
+                      </h3>
+                      <p className="text-white/85 text-[15px] sm:text-[17px] font-light line-clamp-2 md:line-clamp-3 mb-8">
+                        {posts[0].displayExcerpt}
+                      </p>
+                      <div className="mt-auto">
+                        <span className="text-[#D39C16] text-[12px] md:text-[13px] font-bold uppercase tracking-[0.15em] inline-flex items-center gap-2 pb-1.5 border-b border-[#D39C16]/50 group-hover:border-[#D39C16] transition-colors">
+                          {t("readMore")} 
+                          <ArrowRight size={15} className={`transition-transform duration-300 ${isAr ? "group-hover:-translate-x-2" : "group-hover:translate-x-2"}`} />
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+                </motion.article>
+              </Link>
+            </div>
+          )}
+
+          {/* Other Cards (Centered Grid) */}
+          {posts.length > 1 && (
+            <div className="flex flex-wrap justify-center w-full gap-6 md:gap-8">
+              {posts.slice(1).map((post, i) => (
+                <Link 
+                  href={`/${locale}/blog/${post.slug}`} 
+                  key={post.id} 
+                  className="block text-decoration-none w-full md:w-[calc(50%-1.5rem)] xl:w-[480px]"
+                >
+                  <motion.article
+                    initial={{ opacity: 0, y: 20 }} 
+                    whileInView={{ opacity: 1, y: 0 }} 
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="group relative w-full h-[400px] md:h-[450px] rounded-[2rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500"
+                  >
+                    <Image 
+                      src={post.image} 
+                      alt={post.displayTitle} 
+                      fill 
+                      className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                    
+                    <div className="absolute inset-0 p-8 flex flex-col justify-end" dir={isAr ? "rtl" : "ltr"}>
+                      <div className={`absolute top-6 ${isAr ? "left-6" : "right-6"}`}>
+                        <span className="bg-black/40 backdrop-blur-md text-white/90 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest border border-white/10">
+                          {post.displayCategory}
+                        </span>
+                      </div>
+
+                      <div className="relative z-10 w-full">
+                        <div className="flex items-center gap-3 text-white/80 text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase mb-3">
+                          <span className="flex items-center gap-1.5"><Calendar size={11} /> {post.displayDate}</span>
+                          <span className="w-1 h-1 rounded-full bg-white/50" />
+                          <span className="flex items-center gap-1.5"><Clock size={11} /> {post.displayReadTime}</span>
+                        </div>
+                        <h3 className="text-white text-2xl sm:text-[28px] leading-[1.2] font-bold mb-3 drop-shadow-md" style={{ fontFamily: "Playfair Display, serif" }}>
+                          {post.displayTitle}
+                        </h3>
+                        <p className="text-white/85 text-[13px] sm:text-[14px] font-light line-clamp-2 md:line-clamp-3 mb-6">
+                          {post.displayExcerpt}
+                        </p>
+                        <div className="mt-auto">
+                          <span className="text-[#D39C16] text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.15em] inline-flex items-center gap-2 pb-1.5 border-b border-[#D39C16]/50 group-hover:border-[#D39C16] transition-colors">
+                            {t("readMore")} 
+                            <ArrowRight size={14} className={`transition-transform duration-300 ${isAr ? "group-hover:-translate-x-1" : "group-hover:translate-x-1"}`} />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>

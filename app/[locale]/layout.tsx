@@ -13,6 +13,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title,
     description,
+    icons: {
+      icon: "/images/LOGO-1-cropped.png",
+    },
   };
 }
 

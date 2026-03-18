@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ShoppingBag, Star, Plus } from "lucide-react";
+import { ShoppingBag, Star, Plus, Heart, Search, Shuffle } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export interface Product {
@@ -19,6 +19,7 @@ export interface Product {
   badge?: string;
   badgeAr?: string;
   description?: string;
+  descriptionAr?: string;
 }
 
 interface ProductCardProps {
@@ -37,6 +38,15 @@ export default function ProductCard({
   const displayName = isAr && product.nameAr ? product.nameAr : product.name;
   const displayCategory = isAr && product.categoryAr ? product.categoryAr : product.category;
   const displayBadge = isAr && product.badgeAr ? product.badgeAr : product.badge;
+
+  const displayDescription = isAr && product.descriptionAr ? product.descriptionAr : product.description;
+  const defaultDescription = isAr 
+    ? "عناية طبيعية وأصيلة مصممة لإبراز جمالك اليومي بكنوز المغرب."
+    : "Un soin naturel et authentique conçu pour sublimer votre beauté au quotidien avec les trésors du Maroc.";
+
+  const ariaCompare = isAr ? "مقارنة" : "Comparer";
+  const ariaFavorite = isAr ? "المفضلة" : "Favoris";
+  const ariaPreview = isAr ? "نظرة سريعة" : "Aperçu";
 
   const handleAdd = () => {
     addItem({ id: product.id, name: product.name, nameAr: product.nameAr, price: product.price, image: product.image });
@@ -109,11 +119,10 @@ export default function ProductCard({
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
-              className={`w-3 h-3 ${
-                i < product.rating
+              className={`w-3 h-3 ${i < product.rating
                   ? "fill-[#EBD060] text-[#EBD060]"
                   : "fill-gray-100 text-gray-200"
-              }`}
+                }`}
             />
           ))}
           <span className="text-[10px] text-gray-400 ml-1">({product.reviews})</span>
@@ -139,11 +148,39 @@ export default function ProductCard({
             onClick={handleAdd}
             whileHover={{ scale: 1.08, backgroundColor: "#D39C16" }}
             whileTap={{ scale: 0.93 }}
-            className="flex items-center justify-center w-9 h-9 rounded-2xl bg-black text-white transition-colors duration-200 shadow-sm hover:shadow-md"
+            className="flex items-center justify-center w-9 h-9 rounded-2xl bg-black text-white transition-colors duration-200 shadow-sm hover:shadow-md group-hover:opacity-0"
             style={{ backgroundColor: "#000" }}
           >
             <Plus className="w-4 h-4 stroke-[2.5]" />
           </motion.button>
+        </div>
+
+        {/* Hover Details Section */}
+        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+          <div className="overflow-hidden flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+            <p className="text-xs text-gray-600 line-clamp-3 leading-relaxed mt-2" dir="auto">
+              {displayDescription || defaultDescription}
+            </p>
+            <div className="flex items-center justify-between pt-3 border-t border-gray-50">
+              <button className="text-gray-400 hover:text-red-500 transition-colors p-1" aria-label={ariaFavorite}>
+                <Heart className="w-5 h-5" />
+              </button>
+
+              <motion.button
+                onClick={handleAdd}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#EBD060] hover:bg-[#D39C16] text-black font-bold py-2 px-5 rounded-full text-[10px] uppercase tracking-wider transition-colors shadow-sm flex items-center gap-1.5"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" />
+                {buyLabel}
+              </motion.button>
+
+              <button className="text-gray-400 hover:text-black transition-colors p-1" aria-label={ariaPreview}>
+                <Search className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>

@@ -15,6 +15,7 @@ export const products: Product[] = [
     badgeAr: "الأكثر مبيعاً",
     description:
       "Hydrolat de camomille 100 % pur — apaise les rougeurs, hydrate et illumine les peaux sensibles.",
+    descriptionAr: "مقطر البابونج النقي 100% — يهدئ الاحمرار، يرطب ويضيء البشرة الحساسة.",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const products: Product[] = [
     badgeAr: "الأكثر مبيعاً",
     description:
       "Eau florale de rose 100 % naturelle — tonifie, resserre les pores et donne de l'éclat au teint.",
+    descriptionAr: "ماء ورد طبيعي 100% — يوحد لون البشرة، يضيق المسام ويمنح إشراقة للوجه.",
   },
   {
     id: 3,
@@ -45,6 +47,7 @@ export const products: Product[] = [
     badgeAr: "حصري",
     description:
       "Mélange aromatique de plantes pour hammam — purifie le corps, parfume la vapeur et ravive les rituels ancestraux.",
+    descriptionAr: "مزيج عطري من النباتات للحمام — ينقي الجسم، يعطر البخار ويحيي الطقوس القديمة.",
   },
   {
     id: 4,
@@ -58,6 +61,7 @@ export const products: Product[] = [
     reviews: 39,
     description:
       "Savon noir exfoliant au nila — apaise les irritations, répare la barrière cutanée et unifie le grain de peau.",
+    descriptionAr: "صابون أسود مقشر بالنيلة — يهدئ التهيج، يصلح حاجز البشرة ويوحد لونها.",
   },
   {
     id: 5,
@@ -71,6 +75,7 @@ export const products: Product[] = [
     reviews: 64,
     description:
       "Savon noir marocain à l'huile d'argan — hydrate, nourrit et laisse la peau incroyablement douce.",
+    descriptionAr: "صابون أسود مغربي بزيت الأركان — يرطب، يغذي ويترك البشرة ناعمة بشكل لا يصدق.",
   },
   {
     id: 6,
@@ -84,6 +89,7 @@ export const products: Product[] = [
     reviews: 88,
     description:
       "Savon noir purifiant à l'aker fassi — nettoie en profondeur, éclaircit et ravive l'éclat naturel.",
+    descriptionAr: "صابون أسود منقي بالعكر الفاسي — ينظف بعمق، يفتح ويحيي الإشراقة الطبيعية.",
   },
   {
     id: 7,
@@ -99,6 +105,7 @@ export const products: Product[] = [
     badgeAr: "جديد",
     description:
       "Beurre nourrissant à la mangue tropicale — fond sur la peau pour une hydratation longue durée.",
+    descriptionAr: "زبدة مغذية بالمانجو الاستوائية — تذوب على البشرة لترطيب يدوم طويلاً.",
   },
   {
     id: 8,
@@ -114,6 +121,7 @@ export const products: Product[] = [
     badgeAr: "الأكثر مبيعاً",
     description:
       "Crème douceur à la fraise fouettée — nourrit intensément, peau douce et délicieusement parfumée.",
+    descriptionAr: "كريم ناعم بالفراولة المخفوقة — يغذي بكثافة، بشرة ناعمة ومعطرة بلذة.",
   },
   {
     id: 9,
@@ -127,6 +135,7 @@ export const products: Product[] = [
     reviews: 28,
     description:
       "Exfoliant détoxifiant au curcuma et citron — éclaircit, dépigmente et illumine la peau.",
+    descriptionAr: "مقشر مزيل للسموم بالكركم والليمون — يفتح، يعالج التصبغات ويضيء البشرة.",
   },
   {
     id: 10,
@@ -140,6 +149,7 @@ export const products: Product[] = [
     reviews: 34,
     description:
       "Exfoliant cicatrisant au nila marocain et à la lavande — apaise et unifie la peau sensible.",
+    descriptionAr: "مقشر معالج بالنيلة المغربية واللافندر — يهدئ ويوحد البشرة الحساسة.",
   },
   {
     id: 11,
@@ -155,6 +165,7 @@ export const products: Product[] = [
     badgeAr: "جديد",
     description:
       "Gommage régénérant à la noix de coco et aux pétales de rose — peau veloutée et parfumée.",
+    descriptionAr: "مقشر مجدد بجوز الهند وبتلات الورد — بشرة مخملية ومعطرة.",
   },
   {
     id: 12,
@@ -170,6 +181,7 @@ export const products: Product[] = [
     badgeAr: "الأكثر مبيعاً",
     description:
       "Hydrolat d'encens oliban 100 % pur — tonifie, resserre les pores et illumine le teint en profondeur.",
+    descriptionAr: "مقطر لبان الذكر النقي 100% — يوحد اللون، يضيق المسام ويضيء البشرة بعمق.",
   },
 ];
 
@@ -196,6 +208,8 @@ export const blogPosts = [
     readTimeAr: "5 دقائق",
     image: "/images/algue.jpeg",
     slug: "bienfaits-microalgues-peau",
+    content: "Les microalgues, véritables trésors marins, sont de plus en plus prisées en cosmétique naturelle pour leurs propriétés exceptionnelles. Riches en antioxydants, en vitamines et en minéraux, elles aident à lutter contre le vieillissement cutané en neutralisant les radicaux libres. De plus, leur capacité unique à retenir l'eau offre une hydratation intense et durable aux peaux les plus assoiffées. \n\nEn intégrant les microalgues dans votre routine beauté, vous favorisez le renouvellement cellulaire et redonnez de l'éclat à votre teint. Ces organismes microscopiques possèdent également des vertus apaisantes, idéales pour calmer les rougeurs et les irritations. Opter pour des soins à base de microalgues, c'est choisir l'efficacité de la nature pour une peau saine, lumineuse et revitalisée jour après jour.",
+    contentAr: "تعتبر الطحالب الدقيقة، وهي كنوز بحرية حقيقية، ذات شعبية متزايدة في مستحضرات التجميل الطبيعية لخصائصها الاستثنائية. غنية بمضادات الأكسدة والفيتامينات والمعادن، فهي تساعد في مكافحة شيخوخة الجلد عن طريق تحييد الجذور الحرة. بالإضافة إلى ذلك، فإن قدرتها الفريدة على الاحتفاظ بالماء توفر ترطيبًا مكثفًا ودائمًا لأكثر أنواع البشرة عطشًا. \n\nمن خلال دمج الطحالب الدقيقة في روتين جمالك، يمكنك تعزيز تجديد الخلايا واستعادة إشراق بشرتك. تمتلك هذه الكائنات المجهرية أيضًا خصائص مهدئة، مثالية لتهدئة الاحمرار والتهيج. إن اختيار العناية بالبشرة التي تعتمد على الطحالب الدقيقة يعني اختيار فعالية الطبيعة للحصول على بشرة صحية ومشرقة ومنتعشة يومًا بعد يوم."
   },
   {
     id: 2,
@@ -213,6 +227,8 @@ export const blogPosts = [
     readTimeAr: "7 دقائق",
     image: "/images/hamam.jpeg",
     slug: "rituel-hammam-marocain-guide",
+    content: "Le hammam marocain n'est pas seulement un bain, c'est un véritable rituel de purification pour le corps et l'esprit. Cette tradition millénaire repose sur des étapes précises pour nettoyer la peau en profondeur et relâcher les tensions musculaires. L'expérience commence par un bain de vapeur qui ouvre les pores, préparant ainsi la peau à recevoir les soins. \n\nEnsuite vient l'application du savon noir, un produit naturel à base d'olives broyées, suivi d'un gommage vigoureux avec un gant kessa pour éliminer les cellules mortes. Le rituel se termine souvent par un masque purifiant au ghassoul et une hydratation riche à l'huile d'argan. Reproduire ce rituel chez soi permet de s'accorder un moment de détente absolue tout en profitant des bienfaits ancestraux de la beauté marocaine.",
+    contentAr: "الحمام المغربي ليس مجرد حمام، بل هو طقس تنقية حقيقي للجسد والروح. يعتمد هذا التقليد الممتد لألف عام على خطوات دقيقة لتنظيف البشرة بعمق وتخفيف توتر العضلات. تبدأ التجربة بحمام بخار يفتح المسام، ويجهز البشرة لتلقي العلاجات. \n\nثم يأتي تطبيق الصابون الأسود، وهو منتج طبيعي يعتمد على الزيتون المطحون، يليه فرك قوي بقفاز الكيسة لإزالة الخلايا الميتة. غالبًا ما تنتهي الطقوس بقناع منقي مع الغاسول وترطيب غني بزيت الأركان. يتيح لك إعادة إنتاج هذه الطقوس في المنزل أن تمنح نفسك لحظة من الاسترخاء المطلق مع الاستمتاع بفوائد الجمال المغربي القديم."
   },
   {
     id: 3,
