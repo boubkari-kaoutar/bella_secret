@@ -111,35 +111,43 @@ export default function Navbar() {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              {/* CTA Boutique */}
+              <Link
+                href={`/${locale}/shop`}
+                className="hidden lg:flex items-center text-[11px] font-bold tracking-[0.15em] uppercase px-5 py-2.5 rounded-full transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #B8860B 0%, #7A5C0A 100%)",
+                  color: "#fff",
+                  boxShadow: "0 2px 12px rgba(184,134,11,0.35)",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(184,134,11,0.55)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(184,134,11,0.35)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
+              >
+                {t("shop")}
+              </Link>
+
               {/* Language switcher */}
               <Link
                 href={switchLangHref}
-                className={`flex items-center gap-1.5 text-xs font-medium border rounded-full px-3 py-1.5 transition-all ${
-                  "border-gray-200 text-gray-600 hover:border-[#D39C16] hover:text-[#D39C16]"
-                }`}
+                className="flex items-center gap-1.5 text-xs font-medium transition-colors px-2 py-2"
+                style={{ color: "#B8860B" }}
               >
-                <Globe className="w-3.5 h-3.5" />
-                {otherLang}
-              </Link>
-
-              {/* CTA */}
-              <Link
-                href={`/${locale}/shop`}
-                className="hidden lg:flex items-center gap-2 text-xs font-semibold tracking-wide text-black bg-[#EBD060] hover:bg-[#D39C16] px-4 py-2.5 rounded-full transition-all duration-300 uppercase"
-              >
-                {t("shop")}
+                <Globe className="w-4 h-4" />
+                <span className="hidden sm:inline">{otherLang}</span>
               </Link>
 
               {/* Cart */}
               <button
                 onClick={() => setIsOpen(true)}
-                className="relative p-2 rounded-full transition-colors text-black hover:bg-gray-100"
+                className="relative p-2 transition-colors"
+                style={{ color: "#B8860B" }}
                 aria-label="Panier"
               >
                 <ShoppingBag className="w-5 h-5" />
                 {count > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-[#EBD060] text-black text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-0.5 -right-0.5 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #B8860B, #7A5C0A)" }}>
                     {count > 9 ? "9+" : count}
                   </span>
                 )}

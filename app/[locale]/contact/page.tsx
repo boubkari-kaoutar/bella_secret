@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function ContactPage() {
   const t = useTranslations("contact");
@@ -33,6 +34,7 @@ export default function ContactPage() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px" }}>
               {/* Info cards + WhatsApp */}
+              <ScrollReveal>
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                 {[
                   { icon: Phone, label: t("label_phone"), value: t("phone"), href: "tel:+212762627500" },
@@ -61,8 +63,10 @@ export default function ContactPage() {
                   </div>
                 </a>
               </div>
+              </ScrollReveal>
 
               {/* Form */}
+              <ScrollReveal delay={0.15}>
               <div style={{ backgroundColor: "#fff", borderRadius: "20px", padding: "32px", border: "1px solid #f0f0f0" }}>
                 {submitted ? (
                   <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
@@ -98,6 +102,7 @@ export default function ContactPage() {
                   </form>
                 )}
               </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>

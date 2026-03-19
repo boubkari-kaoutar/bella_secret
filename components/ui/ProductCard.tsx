@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag, Star, Plus, Heart, Search } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -47,8 +48,25 @@ export default function ProductCard({
   const ariaFavorite = isAr ? "المفضلة" : "Favoris";
   const ariaPreview = isAr ? "نظرة سريعة" : "Aperçu";
 
+  const tiltRef = useRef<HTMLDivElement>(null);
+
   const handleAdd = () => {
     addItem({ id: product.id, name: product.name, nameAr: product.nameAr, price: product.price, image: product.image });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!tiltRef.current) return;
+    const r = tiltRef.current.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width - 0.5) * 10;
+    const y = ((e.clientY - r.top) / r.height - 0.5) * 10;
+    tiltRef.current.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${-y}deg) scale(1.025)`;
+    tiltRef.current.style.transition = "transform 0.08s ease-out";
+  };
+
+  const handleMouseLeave = () => {
+    if (!tiltRef.current) return;
+    tiltRef.current.style.transform = "perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)";
+    tiltRef.current.style.transition = "transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)";
   };
 
   return (
@@ -56,8 +74,15 @@ export default function ProductCard({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="group relative bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-[#EBD060]/50 hover:shadow-[0_8px_40px_rgba(211,156,22,0.15)] transition-all duration-500"
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      style={{ transformStyle: "preserve-3d" }}
+    >
+    <div
+      ref={tiltRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="group relative bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-[#EBD060]/50 transition-all duration-500"
+      style={{ transformStyle: "preserve-3d", willChange: "transform" }}
     >
       {/* Badge */}
       {displayBadge && (
@@ -184,6 +209,7 @@ export default function ProductCard({
           </div>
         </div>
       </div>
+    </div>
     </motion.div>
   );
 }

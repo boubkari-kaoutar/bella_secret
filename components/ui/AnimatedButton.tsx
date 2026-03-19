@@ -124,7 +124,7 @@ function ButtonCore({ variant = "gold", size = "md", children, disabled, classNa
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       whileTap={{ scale: 0.96 }}
-      className={className}
+      className={`btn-shine ${className}`}
     >
       {/* Liquid fill sweep */}
       <motion.span

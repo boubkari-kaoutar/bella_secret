@@ -24,7 +24,7 @@ export default function PageHero({ badge, title, highlight, subtitle, image }: P
     >
       {image && (
         <div style={{ position: "absolute", inset: 0 }}>
-          <Image src={image} alt={title} fill className="object-cover" style={{ opacity: 0.08 }} />
+          <Image src={image} alt={title} fill className="object-cover" style={{ opacity: 0.08 }} sizes="100vw" />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(250,246,240,0.85) 0%, #FAF6F0 100%)" }} />
         </div>
       )}

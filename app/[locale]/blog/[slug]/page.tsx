@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                 return (
                   <Link href={`/${locale}/blog/${relPost.slug}`} key={relPost.id} className="group block text-decoration-none">
                     <div className="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-sm border border-gray-100">
-                      <Image src={relPost.image} alt={relTitle} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <Image src={relPost.image} alt={relTitle} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
                       <div className={`absolute top-3 ${isAr ? "left-3" : "right-3"}`}>
                         <span className="bg-black/50 backdrop-blur-md text-white text-[9px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">

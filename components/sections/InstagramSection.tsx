@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import SectionTitle from "@/components/ui/SectionTitle";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Instagram } from "lucide-react";
 
 const instagramPosts = [
@@ -21,14 +22,14 @@ export default function InstagramSection() {
   return (
     <section className="py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
+        <ScrollReveal className="text-center mb-10">
           <SectionTitle
             badge="Réseaux sociaux"
             title={t("title")}
             highlight={t("highlight")}
             center
           />
-        </div>
+        </ScrollReveal>
 
         {/* Grid */}
         <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 mb-8">

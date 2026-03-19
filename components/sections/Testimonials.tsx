@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import SectionTitle from "@/components/ui/SectionTitle";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const reviewImages = [
   "/images/review1.jpeg",
@@ -30,7 +31,7 @@ export default function Testimonials() {
     <section className="py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14">
+        <ScrollReveal className="text-center mb-14">
           <SectionTitle
             badge={t("badge")}
             title={t("title")}
@@ -38,7 +39,7 @@ export default function Testimonials() {
             subtitle={t("subtitle")}
             center
           />
-        </div>
+        </ScrollReveal>
 
         {/* ── Desktop grid 4 cols × 2 rows ── */}
         <div className="hidden md:grid grid-cols-4 gap-4">

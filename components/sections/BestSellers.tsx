@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import SectionTitle from "@/components/ui/SectionTitle";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import ProductCard from "@/components/ui/ProductCard";
 import { products } from "@/lib/data";
 import { ArrowRight } from "lucide-react";
@@ -58,7 +59,7 @@ export default function BestSellers() {
         style={{ background: "radial-gradient(circle at 80% 20%, #D39C16, transparent 60%)" }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+        <ScrollReveal className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <SectionTitle
             badge={t("badge")}
             title={t("title")}
@@ -72,7 +73,7 @@ export default function BestSellers() {
             {t("viewAll")}
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
           </Link>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {bestSellers.map((product) => (
