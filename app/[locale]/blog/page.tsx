@@ -26,28 +26,28 @@ export default function BlogPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative bg-black" style={{ paddingTop: "120px", paddingBottom: "64px" }}>
+      <section className="relative bg-[#FAF6F0]" style={{ paddingTop: "120px", paddingBottom: "1px" }}>
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=1920&h=600&fit=crop"
             alt="Blog"
             fill
-            className="object-cover opacity-20"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.7), #000)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(250,246,240,0.85), #FAF6F0)" }} />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <span style={{ color: "#D39C16", fontSize: "11px", fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", display: "block", marginBottom: "12px" }}>
               {t("badge")}
             </span>
-            <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 700, color: "#fff", marginBottom: "16px", lineHeight: 1.15 }}>
+            <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 700, color: "#000", marginBottom: "16px", lineHeight: 1.15 }}>
               {t("title")}{" "}
               <span style={{ background: "linear-gradient(135deg,#EBD060,#D39C16)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 {t("highlight")}
               </span>
             </h1>
-            <p style={{ color: "#9CA3AF", maxWidth: "520px", fontSize: "15px", lineHeight: 1.6 }}>{t("subtitle")}</p>
+            <p style={{ color: "#6B7280", maxWidth: "520px", fontSize: "15px", lineHeight: 1.6 }}>{t("subtitle")}</p>
           </motion.div>
         </div>
       </section>

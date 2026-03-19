@@ -64,18 +64,14 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 1.5 }}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo — LOGO-2.jpg on dark bg, LOGO-1.png on white bg */}
             <Link href={`/${locale}`} className="flex items-center gap-3 flex-shrink-0">
               <Image
-                src={scrolled ? "/images/LOGO-1.png" : "/images/LOGO-2.jpg"}
+                src="/images/LOGO-1.png"
                 alt="Bella Secret"
                 width={44}
                 height={44}
@@ -83,7 +79,7 @@ export default function Navbar() {
               />
               <div className="hidden sm:block">
                 <p
-                  className={`font-bold text-base leading-tight transition-colors ${scrolled ? "text-black" : "text-white"}`}
+                  className="font-bold text-base leading-tight text-black"
                   style={{ fontFamily: "Playfair Display, serif" }}
                 >
                   Bella Secret
@@ -101,8 +97,8 @@ export default function Navbar() {
                   key={link.key}
                   href={`/${locale}${link.href === "/" ? "" : link.href}`}
                   className={`nav-link text-sm font-medium relative group transition-colors ${
-                    scrolled ? "text-gray-700 hover:text-black" : "text-white/90 hover:text-white"
-                  } ${isActive(link.href) ? (scrolled ? "text-black" : "text-white") : ""}`}
+                    "text-gray-700 hover:text-black"
+                  } ${isActive(link.href) ? "text-black" : ""}`}
                 >
                   {t(link.key)}
                   <span
@@ -120,9 +116,7 @@ export default function Navbar() {
               <Link
                 href={switchLangHref}
                 className={`flex items-center gap-1.5 text-xs font-medium border rounded-full px-3 py-1.5 transition-all ${
-                  scrolled
-                    ? "border-gray-200 text-gray-600 hover:border-[#D39C16] hover:text-[#D39C16]"
-                    : "border-white/30 text-white/80 hover:border-white hover:text-white"
+                  "border-gray-200 text-gray-600 hover:border-[#D39C16] hover:text-[#D39C16]"
                 }`}
               >
                 <Globe className="w-3.5 h-3.5" />
@@ -140,9 +134,7 @@ export default function Navbar() {
               {/* Cart */}
               <button
                 onClick={() => setIsOpen(true)}
-                className={`relative p-2 rounded-full transition-colors ${
-                  scrolled ? "text-black hover:bg-gray-100" : "text-white hover:bg-white/10"
-                }`}
+                className="relative p-2 rounded-full transition-colors text-black hover:bg-gray-100"
                 aria-label="Panier"
               >
                 <ShoppingBag className="w-5 h-5" />
@@ -156,9 +148,7 @@ export default function Navbar() {
               {/* Mobile menu */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className={`lg:hidden p-2 rounded-full transition-colors ${
-                  scrolled ? "text-black hover:bg-gray-100" : "text-white hover:bg-white/10"
-                }`}
+                className="lg:hidden p-2 rounded-full transition-colors text-black hover:bg-gray-100"
                 aria-label="Toggle menu"
               >
                 {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

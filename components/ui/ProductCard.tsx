@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ShoppingBag, Star, Plus, Heart, Search, Shuffle } from "lucide-react";
+import { ShoppingBag, Star, Plus, Heart, Search } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export interface Product {
@@ -44,7 +44,6 @@ export default function ProductCard({
     ? "عناية طبيعية وأصيلة مصممة لإبراز جمالك اليومي بكنوز المغرب."
     : "Un soin naturel et authentique conçu pour sublimer votre beauté au quotidien avec les trésors du Maroc.";
 
-  const ariaCompare = isAr ? "مقارنة" : "Comparer";
   const ariaFavorite = isAr ? "المفضلة" : "Favoris";
   const ariaPreview = isAr ? "نظرة سريعة" : "Aperçu";
 
@@ -89,9 +88,10 @@ export default function ProductCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-4">
           <motion.button
             onClick={handleAdd}
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.03, backgroundColor: "#D39C16" }}
             whileTap={{ scale: 0.97 }}
-            className="w-full flex items-center justify-center gap-2 bg-[#EBD060] hover:bg-[#D39C16] text-black text-xs font-bold py-3 rounded-2xl uppercase tracking-wider transition-colors duration-200 shadow-lg"
+            style={{ backgroundColor: "#EBD060" }}
+            className="w-full flex items-center justify-center gap-2 text-black text-xs font-bold py-3 rounded uppercase tracking-wider shadow-lg"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             {buyLabel}
@@ -148,7 +148,7 @@ export default function ProductCard({
             onClick={handleAdd}
             whileHover={{ scale: 1.08, backgroundColor: "#D39C16" }}
             whileTap={{ scale: 0.93 }}
-            className="flex items-center justify-center w-9 h-9 rounded-2xl bg-black text-white transition-colors duration-200 shadow-sm hover:shadow-md group-hover:opacity-0"
+            className="flex items-center justify-center w-9 h-9 rounded-2xl bg-black text-white transition-colors duration-200 shadow-sm hover:shadow-md"
             style={{ backgroundColor: "#000" }}
           >
             <Plus className="w-4 h-4 stroke-[2.5]" />
@@ -168,9 +168,10 @@ export default function ProductCard({
 
               <motion.button
                 onClick={handleAdd}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.04, backgroundColor: "#D39C16" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#EBD060] hover:bg-[#D39C16] text-black font-bold py-2 px-5 rounded-full text-[10px] uppercase tracking-wider transition-colors shadow-sm flex items-center gap-1.5"
+                style={{ backgroundColor: "#EBD060" }}
+                className="text-black font-bold py-2 px-5 rounded text-[10px] uppercase tracking-wider shadow-sm flex items-center gap-1.5"
               >
                 <ShoppingBag className="w-3.5 h-3.5" />
                 {buyLabel}

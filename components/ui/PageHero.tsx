@@ -16,16 +16,16 @@ export default function PageHero({ badge, title, highlight, subtitle, image }: P
     <section
       style={{
         position: "relative",
-        backgroundColor: "#000",
+        backgroundColor: "#FAF6F0",
         paddingTop: "130px",
-        paddingBottom: "70px",
+        paddingBottom: "32px",
         overflow: "hidden",
       }}
     >
       {image && (
         <div style={{ position: "absolute", inset: 0 }}>
-          <Image src={image} alt={title} fill className="object-cover" style={{ opacity: 0.22 }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, #000 100%)" }} />
+          <Image src={image} alt={title} fill className="object-cover" style={{ opacity: 0.08 }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(250,246,240,0.85) 0%, #FAF6F0 100%)" }} />
         </div>
       )}
 
@@ -48,7 +48,7 @@ export default function PageHero({ badge, title, highlight, subtitle, image }: P
             fontFamily: "Playfair Display, serif",
             fontSize: "clamp(2rem, 5vw, 3.5rem)",
             fontWeight: 700, lineHeight: 1.15,
-            color: "#fff", marginBottom: subtitle ? "16px" : 0,
+            color: "#111", marginBottom: subtitle ? "16px" : 0,
           }}>
             {title}{" "}
             {highlight && (
@@ -63,7 +63,7 @@ export default function PageHero({ badge, title, highlight, subtitle, image }: P
             )}
           </h1>
           {subtitle && (
-            <p style={{ color: "#9CA3AF", fontSize: "15px", lineHeight: 1.65, maxWidth: "540px" }}>
+            <p style={{ color: "#6B7280", fontSize: "15px", lineHeight: 1.65, maxWidth: "540px" }}>
               {subtitle}
             </p>
           )}

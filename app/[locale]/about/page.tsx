@@ -52,15 +52,15 @@ export default function AboutPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center bg-black overflow-hidden pt-20">
+      <section className="relative min-h-[70vh] flex items-center bg-[#FAF6F0] overflow-hidden pt-20">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1920&h=1080&fit=crop"
             alt="About Bella Secret"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/85 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.span
@@ -75,7 +75,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.7 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
             {t("hero_title")}{" "}
@@ -185,7 +185,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 bg-black overflow-hidden">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <SectionTitle
@@ -193,13 +193,12 @@ export default function AboutPage() {
               title={t("timeline_title")}
               highlight={t("timeline_highlight")}
               center
-              light
             />
           </div>
 
           <div ref={timelineRef} className="relative">
             {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2 hidden md:block" />
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2 hidden md:block" />
 
             <div className="space-y-8">
               {timelineEvents.map((event, i) => (
@@ -214,15 +213,15 @@ export default function AboutPage() {
                     {event.year.slice(2)}
                   </div>
 
-                  <div className={`flex-1 bg-white/5 border border-white/10 rounded-2xl p-5 ${i % 2 !== 0 ? "md:text-right" : ""}`}>
-                    <p className="text-[#EBD060] text-xs font-semibold mb-1">{event.year}</p>
+                  <div className={`flex-1 bg-[#FAF6F0] border border-gray-100 rounded-2xl p-5 ${i % 2 !== 0 ? "md:text-right" : ""}`}>
+                    <p className="text-[#D39C16] text-xs font-semibold mb-1">{event.year}</p>
                     <h3
-                      className="text-white font-semibold mb-1.5"
+                      className="text-black font-semibold mb-1.5"
                       style={{ fontFamily: "Playfair Display, serif" }}
                     >
                       {event.title}
                     </h3>
-                    <p className="text-gray-400 text-sm">{event.desc}</p>
+                    <p className="text-gray-500 text-sm">{event.desc}</p>
                   </div>
                 </div>
               ))}

@@ -77,7 +77,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#FAF6F0]"
     >
       {/* Background image with overlay */}
       <div ref={imageRef} className="absolute inset-0 z-0">
@@ -85,12 +85,12 @@ export default function Hero() {
           src="https://images.unsplash.com/photo-1619451334792-150fd785ee74?w=1920&h=1080&fit=crop"
           alt="Bella Secret Hero"
           fill
-          className="object-cover opacity-40"
+          className="object-cover opacity-15"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF6F0] via-[#FAF6F0]/85 to-[#FAF6F0]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6F0]/40 via-transparent to-transparent" />
       </div>
 
       {/* Animated blob */}
@@ -124,10 +124,10 @@ export default function Hero() {
       ))}
 
       {/* Content */}
-      <div ref={textRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+      <div ref={textRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-30 lg:pt-30">
         <div className="max-w-3xl">
           {/* Badge */}
-          <div className="hero-badge opacity-0 inline-flex items-center gap-2 border border-[#EBD060]/40 text-[#EBD060] text-xs px-4 py-2 rounded-full mb-8 backdrop-blur-sm bg-white/5">
+          <div className="hero-badge opacity-0 inline-flex items-center gap-2 border border-[#D39C16]/40 text-[#D39C16] text-xs px-4 py-2 rounded-full mb-8 bg-[#EBD060]/10">
             <Leaf className="w-3.5 h-3.5" />
             {t("badge")}
             <span className="w-1 h-1 rounded-full bg-[#EBD060]" />
@@ -137,7 +137,7 @@ export default function Hero() {
           {/* Title */}
           <div className="overflow-hidden mb-2">
             <h1
-              className="hero-title-line opacity-0 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+              className="hero-title-line opacity-0 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
               {t("title1")}
@@ -159,7 +159,7 @@ export default function Hero() {
           </div>
 
           {/* Subtitle */}
-          <p className="hero-sub opacity-0 text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mb-10">
+          <p className="hero-sub opacity-0 text-gray-600 text-base sm:text-lg leading-relaxed max-w-xl mb-10">
             {t("subtitle")}
           </p>
 
@@ -168,7 +168,7 @@ export default function Hero() {
             <AnimatedButton href={`/${locale}/shop`} variant="gold" size="lg">
               {t("cta")}
             </AnimatedButton>
-            <AnimatedButton href={`/${locale}/about`} variant="outline-light" size="lg">
+            <AnimatedButton href={`/${locale}/about`} variant="outline" size="lg">
               {t("cta2")}
             </AnimatedButton>
           </div>
@@ -187,7 +187,7 @@ export default function Hero() {
                 >
                   {stat.value}
                 </p>
-                <p className="text-gray-400 text-xs uppercase tracking-widest mt-0.5">{stat.label}</p>
+                <p className="text-gray-500 text-xs uppercase tracking-widest mt-0.5">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -196,7 +196,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/50"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-gray-400"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

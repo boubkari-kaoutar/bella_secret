@@ -10,7 +10,6 @@ import { SlidersHorizontal } from "lucide-react";
 import { useParams } from "next/navigation";
 
 
-const CATEGORY_VALUES = ["Tout", "Visage", "Corps", "Bain & Hammam"];
 
 export default function ShopPage() {
   const t = useTranslations("shop");
@@ -125,11 +124,11 @@ export default function ShopPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: "64px 24px", backgroundColor: "#000", textAlign: "center" }}>
-        <h2 style={{ fontFamily: "Playfair Display, serif", fontSize: "clamp(1.4rem, 3vw, 1.8rem)", color: "#fff", fontWeight: 700, marginBottom: "12px" }}>
+      <section style={{ padding: "64px 24px", backgroundColor: "#FAF6F0", textAlign: "center" }}>
+        <h2 style={{ fontFamily: "Playfair Display, serif", fontSize: "clamp(1.4rem, 3vw, 1.8rem)", color: "#000", fontWeight: 700, marginBottom: "12px" }}>
           {t("cta_title")}
         </h2>
-        <p style={{ color: "#9CA3AF", marginBottom: "24px", fontSize: "14px" }}>{t("cta_sub")}</p>
+        <p style={{ color: "#6B7280", marginBottom: "24px", fontSize: "14px" }}>{t("cta_sub")}</p>
         <a
           href="https://wa.me/212762627500?text=Bonjour%20Bella%20Secret"
           target="_blank" rel="noopener noreferrer"

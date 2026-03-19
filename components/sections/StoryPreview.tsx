@@ -58,7 +58,7 @@ export default function StoryPreview() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 lg:py-28 bg-black overflow-hidden">
+    <section ref={sectionRef} className="py-20 lg:py-28 bg-[#FAF6F0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
@@ -72,7 +72,7 @@ export default function StoryPreview() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
             </div>
 
@@ -97,7 +97,7 @@ export default function StoryPreview() {
               {t("badge")}
             </span>
             <h2
-              className="story-anim text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+              className="story-anim text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
               {t("title")}{" "}
@@ -112,7 +112,7 @@ export default function StoryPreview() {
                 {t("highlight")}
               </span>
             </h2>
-            <p className="story-anim text-gray-400 text-base leading-relaxed mb-8">
+            <p className="story-anim text-gray-600 text-base leading-relaxed mb-8">
               {t("text")}
             </p>
 
@@ -127,7 +127,7 @@ export default function StoryPreview() {
                   <div className="w-8 h-8 rounded-full bg-[#EBD060]/10 flex items-center justify-center flex-shrink-0">
                     <Icon className="w-4 h-4 text-[#EBD060]" />
                   </div>
-                  <span className="text-gray-300 text-sm">{text}</span>
+                  <span className="text-gray-600 text-sm">{text}</span>
                 </div>
               ))}
             </div>

@@ -52,19 +52,19 @@ export default function Loader() {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#FAF6F0]"
     >
       {/* Blob bg */}
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] blob-animate opacity-10"
-          style={{ background: "radial-gradient(circle, #D39C16 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #EBD060 0%, transparent 70%)" }}
         />
       </div>
 
       <div ref={logoRef} className="relative z-10 mb-6">
         <Image
-          src="/images/LOGO-2.jpg"
+          src="/images/LOGO-1.png"
           alt="Bella Secret"
           width={100}
           height={100}
@@ -75,7 +75,7 @@ export default function Loader() {
 
       <div ref={textRef} className="relative z-10 text-center mb-10">
         <p
-          className="text-white text-2xl tracking-[0.4em] uppercase"
+          className="text-black text-2xl tracking-[0.4em] uppercase"
           style={{ fontFamily: "Playfair Display, serif" }}
         >
           Bella Secret
@@ -86,7 +86,7 @@ export default function Loader() {
       </div>
 
       {/* Progress bar */}
-      <div className="relative z-10 w-48 h-[1px] bg-white/10 overflow-hidden rounded-full">
+      <div className="relative z-10 w-48 h-[1px] bg-gray-200 overflow-hidden rounded-full">
         <div
           ref={progressRef}
           className="h-full w-0 rounded-full"
