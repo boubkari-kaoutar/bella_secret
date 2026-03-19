@@ -61,7 +61,7 @@ export default function ContactPage() {
       {/* Content */}
       <section style={{ paddingBottom: "80px" }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }} className="grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
             {/* Left — info + image */}
             <ScrollReveal>
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   </motion.div>
                 ) : (
                   <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label style={labelStyle}>{t("name")}</label>
                         <input type="text" placeholder={t("name")} required style={inputStyle} />
