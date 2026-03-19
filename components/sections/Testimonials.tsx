@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,18 +19,41 @@ const reviewImages = [
   "/images/review8.jpeg",
 ];
 
+const row1 = [...reviewImages, ...reviewImages];
+const row2 = [...reviewImages].reverse().concat([...reviewImages].reverse());
+
 export default function Testimonials() {
   const t = useTranslations("testimonials");
-  const [current, setCurrent] = useState(0);
   const [lightbox, setLightbox] = useState<number | null>(null);
-
-  const prev = () => setCurrent((c) => (c === 0 ? reviewImages.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === reviewImages.length - 1 ? 0 : c + 1));
 
   return (
     <section className="py-20 lg:py-28 bg-white overflow-hidden">
+      <style>{`
+        @keyframes marquee-left {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .marquee-track-left {
+          display: flex;
+          width: max-content;
+          animation: marquee-left 28s linear infinite;
+        }
+        .marquee-track-right {
+          display: flex;
+          width: max-content;
+          animation: marquee-right 32s linear infinite;
+        }
+        .marquee-wrap:hover .marquee-track-left,
+        .marquee-wrap:hover .marquee-track-right {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <ScrollReveal className="text-center mb-14">
           <SectionTitle
             badge={t("badge")}
@@ -40,96 +63,80 @@ export default function Testimonials() {
             center
           />
         </ScrollReveal>
+      </div>
 
-        {/* ── Desktop grid 4 cols × 2 rows ── */}
-        <div className="hidden md:grid grid-cols-4 gap-4">
-          {reviewImages.map((src, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="group relative rounded-2xl overflow-hidden cursor-zoom-in border border-gray-100 hover:border-[#EBD060]/40 hover:shadow-[0_4px_30px_rgba(211,156,22,0.15)] transition-all duration-400"
-              style={{ aspectRatio: "4/5" }}
-              onClick={() => setLightbox(i)}
-            >
-              <Image
-                src={src}
-                alt={`Avis client ${i + 1}`}
-                fill
-                className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                sizes="(max-width: 1200px) 25vw, 280px"
-              />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 text-black text-[10px] font-semibold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-md">
-                  {t("see")}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* ── Mobile slider ── */}
-        <div className="md:hidden">
-          <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "4/5" }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, x: 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -60 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="absolute inset-0"
-                onClick={() => setLightbox(current)}
+      {/* ── Marquee rows ── */}
+      <div className="marquee-wrap" style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "64px" }}>
+        {/* Row 1 — left */}
+        <div style={{ overflow: "hidden", position: "relative" }}>
+          {/* Fade edges */}
+          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to right, #fff, transparent)", zIndex: 2, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to left, #fff, transparent)", zIndex: 2, pointerEvents: "none" }} />
+          <div className="marquee-track-left">
+            {row1.map((src, i) => (
+              <div
+                key={i}
+                onClick={() => setLightbox(i % reviewImages.length)}
+                style={{
+                  flexShrink: 0, width: 200, height: 260, margin: "0 8px",
+                  borderRadius: 16, overflow: "hidden", cursor: "zoom-in",
+                  border: "1px solid #f0f0f0",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1.03)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(211,156,22,0.15)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                }}
               >
-                <Image
-                  src={reviewImages[current]}
-                  alt={`Avis client ${current + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="100vw"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Controls */}
-          <div className="flex items-center justify-between mt-5 px-1">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#D39C16] hover:text-[#D39C16] transition-colors"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <div className="flex gap-1.5">
-              {reviewImages.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current ? "w-6 h-2 bg-[#D39C16]" : "w-2 h-2 bg-gray-200"
-                  }`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#D39C16] hover:text-[#D39C16] transition-colors"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+                <Image src={src} alt={`Avis ${i + 1}`} width={200} height={260} style={{ objectFit: "cover", width: "100%", height: "100%" }} sizes="200px" />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Stats strip */}
+        {/* Row 2 — right */}
+        <div style={{ overflow: "hidden", position: "relative" }}>
+          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to right, #fff, transparent)", zIndex: 2, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, background: "linear-gradient(to left, #fff, transparent)", zIndex: 2, pointerEvents: "none" }} />
+          <div className="marquee-track-right">
+            {row2.map((src, i) => (
+              <div
+                key={i}
+                onClick={() => setLightbox(i % reviewImages.length)}
+                style={{
+                  flexShrink: 0, width: 200, height: 260, margin: "0 8px",
+                  borderRadius: 16, overflow: "hidden", cursor: "zoom-in",
+                  border: "1px solid #f0f0f0",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1.03)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(211,156,22,0.15)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                }}
+              >
+                <Image src={src} alt={`Avis ${i + 1}`} width={200} height={260} style={{ objectFit: "cover", width: "100%", height: "100%" }} sizes="200px" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Stats strip */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-14 pt-10 border-t border-gray-100"
+          transition={{ delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-14 pt-10 border-t border-gray-100"
         >
           {[
             { value: "500+", label: t("stat1") },
@@ -137,10 +144,7 @@ export default function Testimonials() {
             { value: "100%", label: t("stat3") },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <p
-                className="text-2xl font-bold text-black"
-                style={{ fontFamily: "Playfair Display, serif" }}
-              >
+              <p className="text-2xl font-bold text-black" style={{ fontFamily: "Playfair Display, serif" }}>
                 {s.value}
               </p>
               <p className="text-xs text-gray-400 uppercase tracking-widest mt-0.5">{s.label}</p>
@@ -177,7 +181,6 @@ export default function Testimonials() {
               />
             </motion.div>
 
-            {/* Prev / Next inside lightbox */}
             <button
               onClick={(e) => { e.stopPropagation(); setLightbox((l) => (l! === 0 ? reviewImages.length - 1 : l! - 1)); }}
               className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
@@ -190,7 +193,6 @@ export default function Testimonials() {
             >
               <ChevronRight className="w-5 h-5" />
             </button>
-
             <button
               onClick={() => setLightbox(null)}
               className="absolute top-4 right-4 text-white/60 hover:text-white text-sm uppercase tracking-widest"

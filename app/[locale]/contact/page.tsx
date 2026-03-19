@@ -4,70 +4,114 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
-import PageHero from "@/components/ui/PageHero";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  border: "none",
+  borderBottom: "1.5px solid #e5e7eb",
+  padding: "10px 0",
+  fontSize: "14px",
+  color: "#000",
+  outline: "none",
+  backgroundColor: "transparent",
+  borderRadius: 0,
+};
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: "10px",
+  fontWeight: 700,
+  letterSpacing: "0.14em",
+  textTransform: "uppercase",
+  color: "#9CA3AF",
+  marginBottom: "4px",
+};
 
 export default function ContactPage() {
   const t = useTranslations("contact");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
-
-  const inputStyle: React.CSSProperties = {
-    width: "100%", border: "1.5px solid #e5e7eb", borderRadius: "12px",
-    padding: "12px 16px", fontSize: "14px", color: "#000",
-    outline: "none", transition: "border 0.2s", backgroundColor: "#fff",
-  };
+  const infos = [
+    { icon: Phone, label: t("label_phone"), value: t("phone"), href: "tel:+212762627500" },
+    { icon: Mail, label: t("label_email"), value: "contact@bellasecret.ma", href: "mailto:contact@bellasecret.ma" },
+    { icon: MapPin, label: t("label_address"), value: t("address"), href: "#" },
+  ];
 
   return (
-    <div>
-      <PageHero
-        badge={t("badge")}
-        title={t("title")}
-        highlight={t("highlight")}
-        subtitle={t("subtitle")}
-      />
+    <div style={{ backgroundColor: "#FAF6F0", minHeight: "100vh" }}>
+      {/* Header */}
+      <section style={{ paddingTop: "120px", paddingBottom: "64px" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#D39C16", marginBottom: "16px" }}>
+              {t("badge")}
+            </p>
+            <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: "clamp(2.2rem, 5vw, 3.8rem)", fontWeight: 700, color: "#000", lineHeight: 1.15, marginBottom: "16px" }}>
+              {t("title")}{" "}
+              <span style={{ color: "#000" }}>
+                {t("highlight")}
+              </span>
+            </h1>
+            <p style={{ fontSize: "15px", color: "#6B7280", maxWidth: "480px", lineHeight: 1.7 }}>{t("subtitle")}</p>
+          </ScrollReveal>
+        </div>
+      </section>
 
-      <section style={{ padding: "56px 0", backgroundColor: "#FAF6F0" }}>
-        <div className="max-w-7xl mx-auto" style={{ padding: "0 24px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "32px" }} className="lg:grid-cols-5-3">
+      {/* Content */}
+      <section style={{ paddingBottom: "80px" }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }} className="grid-cols-1 lg:grid-cols-2">
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px" }}>
-              {/* Info cards + WhatsApp */}
-              <ScrollReveal>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                {[
-                  { icon: Phone, label: t("label_phone"), value: t("phone"), href: "tel:+212762627500" },
-                  { icon: Mail, label: t("label_email"), value: "contact@bellasecret.ma", href: "mailto:contact@bellasecret.ma" },
-                  { icon: MapPin, label: t("label_address"), value: t("address"), href: "#" },
-                ].map(({ icon: Icon, label, value, href }) => (
-                  <a key={label} href={href} style={{ display: "flex", alignItems: "flex-start", gap: "14px", backgroundColor: "#fff", borderRadius: "16px", padding: "18px", border: "1px solid #f0f0f0", textDecoration: "none", transition: "border 0.2s" }}>
-                    <div style={{ width: "38px", height: "38px", borderRadius: "10px", backgroundColor: "rgba(235,208,96,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            {/* Left — info + image */}
+            <ScrollReveal>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+                {infos.map(({ icon: Icon, label, value, href }, i) => (
+                  <a
+                    key={label}
+                    href={href}
+                    style={{
+                      display: "flex", alignItems: "center", gap: "18px",
+                      padding: "24px 0",
+                      borderBottom: "1px solid #e8e3dc",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <div style={{
+                      width: 42, height: 42, borderRadius: "12px",
+                      backgroundColor: "rgba(235,208,96,0.1)",
+                      border: "1px solid rgba(211,156,22,0.18)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      flexShrink: 0,
+                    }}>
                       <Icon size={16} color="#D39C16" />
                     </div>
                     <div>
-                      <p style={{ fontSize: "11px", color: "#9CA3AF", marginBottom: "3px" }}>{label}</p>
-                      <p style={{ fontSize: "14px", fontWeight: 600, color: "#000" }}>{value}</p>
+                      <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#B0A898", marginBottom: "3px" }}>{label}</p>
+                      <p style={{ fontSize: "15px", fontWeight: 600, color: "#111" }}>{value}</p>
                     </div>
                   </a>
                 ))}
-
-                <a href="https://wa.me/212762627500?text=Bonjour%20Bella%20Secret" target="_blank" rel="noopener noreferrer"
-                  style={{ display: "flex", alignItems: "center", gap: "12px", backgroundColor: "#25D366", borderRadius: "16px", padding: "18px", textDecoration: "none" }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style={{ width: 20, height: 20, flexShrink: 0 }} aria-hidden="true">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                  </svg>
-                  <div>
-                    <p style={{ fontWeight: 700, color: "#fff", fontSize: "14px" }}>{t("whatsapp")}</p>
-                    <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "12px" }}>{t("fast_reply")}</p>
-                  </div>
-                </a>
               </div>
-              </ScrollReveal>
 
-              {/* Form */}
-              <ScrollReveal delay={0.15}>
-              <div style={{ backgroundColor: "#fff", borderRadius: "20px", padding: "32px", border: "1px solid #f0f0f0" }}>
+              {/* Image */}
+              <div style={{ marginTop: "36px", borderRadius: "20px", overflow: "hidden", height: "260px", position: "relative" }}>
+                <img
+                  src="/images/contact.jpeg"
+                  alt="Bella Secret"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 60%)" }} />
+                <div style={{ position: "absolute", bottom: 20, left: 24 }}>
+                  <p style={{ color: "#EBD060", fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "4px" }}>Bella Secret</p>
+                  <p style={{ color: "#fff", fontSize: "13px", fontWeight: 600, fontFamily: "Playfair Display, serif" }}>Nature House — Maroc</p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Right — form */}
+            <ScrollReveal delay={0.15}>
+              <div style={{ backgroundColor: "#fff", borderRadius: "24px", padding: "40px 36px" }}>
                 {submitted ? (
                   <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
                     style={{ textAlign: "center", padding: "40px 0" }}>
@@ -76,34 +120,51 @@ export default function ContactPage() {
                     <p style={{ color: "#6B7280", fontSize: "14px" }}>{t("sent_sub")}</p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                  <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
                       <div>
-                        <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#374151", marginBottom: "6px" }}>{t("name")}</label>
+                        <label style={labelStyle}>{t("name")}</label>
                         <input type="text" placeholder={t("name")} required style={inputStyle} />
                       </div>
                       <div>
-                        <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#374151", marginBottom: "6px" }}>{t("email")}</label>
+                        <label style={labelStyle}>{t("email")}</label>
                         <input type="email" placeholder={t("email")} required style={inputStyle} />
                       </div>
                     </div>
                     <div>
-                      <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#374151", marginBottom: "6px" }}>{t("subject")}</label>
+                      <label style={labelStyle}>{t("subject")}</label>
                       <input type="text" placeholder={t("subject")} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#374151", marginBottom: "6px" }}>{t("message")}</label>
-                      <textarea rows={5} placeholder={t("message")} required
-                        style={{ ...inputStyle, resize: "none" }} />
+                      <label style={labelStyle}>{t("message")}</label>
+                      <textarea rows={5} placeholder={t("message")} required style={{ ...inputStyle, resize: "none" }} />
                     </div>
-                    <button type="submit" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "#000", color: "#fff", fontWeight: 700, padding: "14px", borderRadius: "999px", fontSize: "14px", border: "none", cursor: "pointer" }}>
-                      <Send size={15} /> {t("submit")}
-                    </button>
+
+                    <motion.button
+                      type="submit"
+                      whileHover="hover"
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: "10px",
+                        backgroundColor: "#111", color: "#fff",
+                        fontWeight: 700, fontSize: "11px", letterSpacing: "0.14em", textTransform: "uppercase",
+                        padding: "13px 26px", borderRadius: "999px",
+                        border: "none", cursor: "pointer", alignSelf: "flex-start",
+                      }}
+                    >
+                      {t("submit")}
+                      <motion.span
+                        variants={{ hover: { x: 5 } }}
+                        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <Send size={13} />
+                      </motion.span>
+                    </motion.button>
                   </form>
                 )}
               </div>
-              </ScrollReveal>
-            </div>
+            </ScrollReveal>
+
           </div>
         </div>
       </section>

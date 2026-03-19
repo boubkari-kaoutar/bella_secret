@@ -169,9 +169,36 @@ export default function ResellerPage() {
                 <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#374151", marginBottom: "6px" }}>{t("message")}</label>
                 <textarea rows={4} placeholder={t("message")} style={{ ...inputStyle, resize: "none" }} />
               </div>
-              <button type="submit" style={{ backgroundColor: "#EBD060", color: "#000", fontWeight: 700, padding: "15px", borderRadius: "999px", fontSize: "14px", border: "none", cursor: "pointer", letterSpacing: "0.04em" }}>
+              <motion.button
+                type="submit"
+                whileHover="hover"
+                initial="rest"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "10px",
+                  background: "linear-gradient(135deg, #B8860B 0%, #6B4C08 100%)",
+                  color: "#fff", fontWeight: 700,
+                  fontSize: "11px", letterSpacing: "0.14em", textTransform: "uppercase",
+                  padding: "14px 32px", borderRadius: "999px",
+                  border: "none", cursor: "pointer", position: "relative", overflow: "hidden",
+                  boxShadow: "0 4px 20px rgba(184,134,11,0.35)", alignSelf: "stretch",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 28px rgba(184,134,11,0.5)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(184,134,11,0.35)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
+              >
+                <motion.span
+                  variants={{ rest: { x: "-100%", opacity: 0 }, hover: { x: "100%", opacity: 1 } }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%)", pointerEvents: "none" }}
+                />
                 {t("submit")}
-              </button>
+                <motion.svg
+                  variants={{ rest: { x: 0 }, hover: { x: 5 } }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </motion.svg>
+              </motion.button>
             </form>
           )}
         </div>
