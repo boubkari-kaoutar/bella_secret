@@ -66,7 +66,7 @@ export default function ContactPage() {
             {/* Left — info + image */}
             <ScrollReveal>
               <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-                {infos.map(({ icon: Icon, label, value, href }, i) => (
+                {infos.map(({ icon: Icon, label, value, href }) => (
                   <a
                     key={label}
                     href={href}
@@ -88,7 +88,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#B0A898", marginBottom: "3px" }}>{label}</p>
-                      <p style={{ fontSize: "15px", fontWeight: 600, color: "#111" }}>{value}</p>
+                      <p style={{ fontSize: "15px", fontWeight: 600, color: "#111" }} dir="ltr">{value}</p>
                     </div>
                   </a>
                 ))}
