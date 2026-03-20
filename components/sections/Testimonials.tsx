@@ -66,7 +66,7 @@ export default function Testimonials() {
       </div>
 
       {/* ── Marquee rows ── */}
-      <div className="marquee-wrap" style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "64px" }}>
+      <div className="marquee-wrap" style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "64px", direction: "ltr" }}>
         {/* Row 1 — left */}
         <div style={{ overflow: "hidden", position: "relative" }}>
           {/* Fade edges */}

@@ -207,7 +207,7 @@ export default function AboutPage() {
                   {/* Background image with blur */}
                   <div className="absolute inset-0">
                     <img
-                      src={`/images/piliers/${LABELS_VALUES[activeValue]}.png`}
+                      src={`/images/piliers/${LABELS_VALUES_FR[activeValue]}.png`}
                       alt={LABELS_VALUES[activeValue]}
                       className="w-full h-full object-cover"
                       style={{ filter: "blur(1.5px)", transform: "scale(1.05)" }}
