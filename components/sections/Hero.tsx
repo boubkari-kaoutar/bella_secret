@@ -24,8 +24,7 @@ export default function Hero() {
 
     const tl = gsap.timeline({ delay: 1.9 });
 
-    tl.fromTo(".hero-badge", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 })
-      .fromTo(
+    tl.fromTo(
         ".hero-title-line",
         { opacity: 0, y: 50, skewY: 2 },
         { opacity: 1, y: 0, skewY: 0, duration: 0.7, stagger: 0.12, ease: "power3.out" },
@@ -120,14 +119,6 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 lg:pt-32 pb-10 lg:pb-17">
         <div className="max-w-2xl xl:max-w-3xl">
 
-          {/* Badge */}
-          <div className="hero-badge opacity-0 inline-flex items-center gap-2 border border-[#D39C16]/40 text-[#EBD060] text-xs px-4 py-2 rounded-full mb-8 bg-[#EBD060]/8 backdrop-blur-sm"
-            style={{ backgroundColor: "rgba(235,208,96,0.08)" }}>
-            <Leaf className="w-3.5 h-3.5" />
-            {t("badge")}
-            <span className="w-1 h-1 rounded-full bg-[#EBD060]" />
-            <Award className="w-3.5 h-3.5" />
-          </div>
 
           {/* Title line 1 */}
           <div className="overflow-hidden mb-1">

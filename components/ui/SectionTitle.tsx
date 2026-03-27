@@ -32,16 +32,7 @@ export default function SectionTitle({ badge, title, highlight, subtitle, center
 
   return (
     <div ref={ref} style={{ textAlign: center ? "center" : "left" }}>
-      {badge && (
-        <span className="st-anim" style={{
-          display: "inline-block", color: "#D39C16",
-          fontSize: "11px", fontWeight: 700,
-          letterSpacing: "0.25em", textTransform: "uppercase",
-          marginBottom: "10px",
-        }}>
-          {badge}
-        </span>
-      )}
+
       <h2 className="st-anim" style={{
         fontFamily: "Playfair Display, serif",
         fontSize: "clamp(1.8rem, 4vw, 3rem)",

@@ -75,9 +75,7 @@ export default function WhyBella() {
 
           {/* ── Left: text ── */}
           <div ref={leftRef} className="lg:sticky lg:top-28">
-            <span className="left-anim opacity-0 inline-block text-[#D39C16] text-[11px] font-bold tracking-[0.25em] uppercase mb-5">
-              {t("badge")}
-            </span>
+
             <h2
               className="left-anim opacity-0 text-4xl sm:text-5xl font-bold text-black leading-tight mb-6"
               style={{ fontFamily: "Playfair Display, serif" }}

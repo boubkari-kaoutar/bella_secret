@@ -93,9 +93,7 @@ export default function StoryPreview() {
 
           {/* Content */}
           <div ref={contentRef}>
-            <span className="story-anim inline-block text-[#D39C16] text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-              {t("badge")}
-            </span>
+
             <h2
               className="story-anim text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6"
               style={{ fontFamily: "Playfair Display, serif" }}
