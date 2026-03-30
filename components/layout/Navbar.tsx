@@ -92,17 +92,6 @@ export default function Navbar() {
                   className="object-contain"
                 />
               </motion.div>
-              <div className="hidden sm:block">
-                <p
-                  className="font-bold leading-tight text-black"
-                  style={{ fontFamily: "Playfair Display, serif", fontSize: "15px" }}
-                >
-                  Bella Secret
-                </p>
-                <p className="tracking-[0.22em] uppercase" style={{ fontSize: "9px", color: "#D39C16" }}>
-                  Nature House
-                </p>
-              </div>
             </Link>
 
             {/* Desktop links */}

@@ -28,9 +28,22 @@ const labelStyle: React.CSSProperties = {
   marginBottom: "4px",
 };
 
+const WHATSAPP_NUMBER = "212762627500";
+
 export default function ContactPage() {
   const t = useTranslations("contact");
   const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `*Nouveau message — Bella Secret*\n\n👤 *Nom:* ${form.name}\n📧 *Email:* ${form.email}\n📌 *Sujet:* ${form.subject}\n\n💬 *Message:*\n${form.message}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    setSubmitted(true);
+  };
 
   const infos = [
     { icon: Phone, label: t("label_phone"), value: t("phone"), href: "tel:+212762627500" },
@@ -120,24 +133,24 @@ export default function ContactPage() {
                     <p style={{ color: "#6B7280", fontSize: "14px" }}>{t("sent_sub")}</p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+                  <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label style={labelStyle}>{t("name")}</label>
-                        <input type="text" placeholder={t("name")} required style={inputStyle} />
+                        <input name="name" type="text" placeholder={t("name")} required value={form.name} onChange={handleChange} style={inputStyle} />
                       </div>
                       <div>
                         <label style={labelStyle}>{t("email")}</label>
-                        <input type="email" placeholder={t("email")} required style={inputStyle} />
+                        <input name="email" type="email" placeholder={t("email")} required value={form.email} onChange={handleChange} style={inputStyle} />
                       </div>
                     </div>
                     <div>
                       <label style={labelStyle}>{t("subject")}</label>
-                      <input type="text" placeholder={t("subject")} style={inputStyle} />
+                      <input name="subject" type="text" placeholder={t("subject")} value={form.subject} onChange={handleChange} style={inputStyle} />
                     </div>
                     <div>
                       <label style={labelStyle}>{t("message")}</label>
-                      <textarea rows={5} placeholder={t("message")} required style={{ ...inputStyle, resize: "none" }} />
+                      <textarea name="message" rows={5} placeholder={t("message")} required value={form.message} onChange={handleChange} style={{ ...inputStyle, resize: "none" }} />
                     </div>
 
                     <motion.button

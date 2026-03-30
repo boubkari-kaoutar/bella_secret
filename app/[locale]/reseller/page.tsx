@@ -4,11 +4,10 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { CheckCircle, TrendingUp, Package, HeartHandshake, Percent, Truck } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-const icons = [Percent, Package, Truck, TrendingUp, HeartHandshake, CheckCircle];
 const LABELS_FR = ["TARIFS", "STOCK", "LIVRAISON", "CROISSANCE", "PARTENARIAT", "QUALITÉ"];
 const LABELS_AR = ["أسعار", "مخزون", "توصيل", "نمو", "شراكة", "جودة"];
 
@@ -18,6 +17,17 @@ export default function ResellerPage() {
   const locale = (params?.locale as string) || "fr";
   const isAr = locale === "ar";
   const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: "", company: "", city: "", phone: "", email: "", message: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `*Demande Revendeur — Bella Secret*\n\n👤 *Nom:* ${form.name}\n🏪 *Boutique/Société:* ${form.company}\n📍 *Ville:* ${form.city}\n📞 *Téléphone:* ${form.phone}\n📧 *Email:* ${form.email}\n\n💬 *Message:*\n${form.message}`;
+    window.open(`https://wa.me/212762627500?text=${encodeURIComponent(text)}`, "_blank");
+    setSubmitted(true);
+  };
 
   const benefits = t.raw("benefits") as { title: string; desc: string }[];
 
@@ -49,7 +59,6 @@ export default function ResellerPage() {
           {/* Bento grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr" dir={isAr ? "rtl" : "ltr"}>
             {benefits.map((b, i) => {
-              const Icon = icons[i];
               const isFeatured = i === 0;
               return (
                 <motion.div
@@ -93,13 +102,6 @@ export default function ResellerPage() {
                     style={{ background: "linear-gradient(to right, transparent, #D39C16, transparent)" }}
                   />
 
-                  {/* Icon */}
-                  <div
-                    className="w-11 h-11 rounded-2xl flex items-center justify-center mb-5"
-                    style={{ backgroundColor: isFeatured ? "rgba(235,208,96,0.15)" : "rgba(235,208,96,0.1)" }}
-                  >
-                    <Icon size={19} color="#D39C16" />
-                  </div>
 
                   {/* Label */}
                   <p
@@ -152,7 +154,7 @@ export default function ResellerPage() {
               <p style={{ color: "#6B7280" }}>{t("sent_sub")}</p>
             </motion.div>
           ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               {[
                 { key: "name", label: t("name"), type: "text" },
                 { key: "company", label: t("company"), type: "text" },
@@ -162,12 +164,12 @@ export default function ResellerPage() {
               ].map((f) => (
                 <div key={f.key}>
                   <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#374151", marginBottom: "6px" }}>{f.label}</label>
-                  <input type={f.type} placeholder={f.label} style={inputStyle} />
+                  <input name={f.key} type={f.type} placeholder={f.label} value={form[f.key as keyof typeof form]} onChange={handleChange} style={inputStyle} />
                 </div>
               ))}
               <div>
                 <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: "#374151", marginBottom: "6px" }}>{t("message")}</label>
-                <textarea rows={4} placeholder={t("message")} style={{ ...inputStyle, resize: "none" }} />
+                <textarea name="message" rows={4} placeholder={t("message")} value={form.message} onChange={handleChange} style={{ ...inputStyle, resize: "none" }} />
               </div>
               <motion.button
                 type="submit"

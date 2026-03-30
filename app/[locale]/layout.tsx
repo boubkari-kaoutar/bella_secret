@@ -7,8 +7,12 @@ import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const title = locale === "fr" ? "Accueil" : "Bella Secret – Nature House";
-  const description = "Découvrez des cosmétiques 100% naturels, enrichis en microalgues et extraits végétaux, pour nourrir, protéger et sublimer votre peau et vos cheveux. Des soins conçus avec passion et science, pour une beauté saine et éclatante au quotidien.";
+  const title = locale === "ar"
+    ? "بيلا سيكريت – مستحضرات التجميل الطبيعية"
+    : "Bella Secret – Cosmétiques Naturels au Maroc";
+  const description = locale === "ar"
+    ? "اكتشفي مستحضرات تجميل 100% طبيعية، مصنوعة بعناية من مكونات نباتية لتغذية بشرتك وشعرك."
+    : "Découvrez des cosmétiques 100% naturels, enrichis en microalgues et extraits végétaux, pour nourrir, protéger et sublimer votre peau et vos cheveux.";
 
   return {
     title,
