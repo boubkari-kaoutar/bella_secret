@@ -41,15 +41,53 @@ export default function CheckoutPage() {
   });
   const [loading, setLoading] = useState(false);
 
-  const deliveryOption = DELIVERY_OPTIONS.find((d) => d.id === delivery)!;
-  const deliveryFee = total >= FREE_THRESHOLD ? 0 : deliveryOption.fee;
-  const grandTotal = total + deliveryFee;
+  // const deliveryOption = DELIVERY_OPTIONS.find((d) => d.id === delivery)!;
+  // const deliveryFee = total >= FREE_THRESHOLD ? 0 : deliveryOption.fee;
+  // const grandTotal = total + deliveryFee;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
+
+    const deliveryLabel = delivery === "standard"
+      ? "Livraison standard (2-3 jours)"
+      : "Livraison express (24h)";
+
+    const paymentLabel = payment === "cod"
+      ? "Paiement à la livraison"
+      : "Carte bancaire";
+
+    const productLines = items
+      .map((item) => `  • ${isAr && item.nameAr ? item.nameAr : item.name} × ${item.quantity}`)
+      .join("\n");
+
+    const message = [
+      "🛍️ *NOUVELLE COMMANDE — Bella Secret*",
+      "",
+      "👤 *Informations client :*",
+      `Nom : ${form.firstName} ${form.lastName}`,
+      `Téléphone : ${form.phone}`,
+      form.email ? `Email : ${form.email}` : "",
+      "",
+      "📦 *Produits commandés :*",
+      productLines,
+      "",
+      "📍 *Livraison :*",
+      `Adresse : ${form.address}`,
+      `Ville : ${form.city}`,
+      `Mode : ${deliveryLabel}`,
+      "",
+      `💳 *Paiement :* ${paymentLabel}`,
+      form.notes ? `\n📝 *Remarques :* ${form.notes}` : "",
+    ]
+      .filter((line) => line !== "")
+      .join("\n");
+
+    const whatsappUrl = `https://wa.me/212762627500?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+
     clearCart();
+    setLoading(false);
     router.push(`/${locale}/checkout/success`);
   };
 
@@ -301,12 +339,12 @@ export default function CheckoutPage() {
                             {isAr && item.nameAr ? item.nameAr : item.name}
                           </p>
                         </div>
-                        <p className="text-sm font-bold text-black flex-shrink-0">{item.price * item.quantity} MAD</p>
+                        {/* <p className="text-sm font-bold text-black flex-shrink-0">{item.price * item.quantity} MAD</p> */}
                       </div>
                     ))}
                   </div>
 
-                  <div className="px-6 py-4 space-y-2">
+                  {/* <div className="px-6 py-4 space-y-2">
                     <div className="flex justify-between text-sm text-gray-500">
                       <span>{t("subtotal")}</span>
                       <span>{total} MAD</span>
@@ -323,7 +361,7 @@ export default function CheckoutPage() {
                       <span>{t("total")}</span>
                       <span className="text-[#D39C16] text-lg">{grandTotal} MAD</span>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="px-6 pb-6">
                     <button

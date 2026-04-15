@@ -8,18 +8,18 @@ import { useCart } from "@/context/CartContext";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-const DELIVERY_FREE_THRESHOLD = 500;
-const DELIVERY_FEE = 30;
+// const DELIVERY_FREE_THRESHOLD = 500;
+// const DELIVERY_FEE = 30;
 
 export default function CartDrawer() {
-  const { items, isOpen, setIsOpen, removeItem, updateQuantity, total, count } = useCart();
+  const { items, isOpen, setIsOpen, removeItem, updateQuantity, count } = useCart();
   const params = useParams();
   const locale = (params?.locale as string) || "fr";
   const isAr = locale === "ar";
   const t = useTranslations("cart");
 
-  const deliveryFee = total >= DELIVERY_FREE_THRESHOLD ? 0 : DELIVERY_FEE;
-  const grandTotal = total + deliveryFee;
+  // const deliveryFee = total >= DELIVERY_FREE_THRESHOLD ? 0 : DELIVERY_FEE;
+  // const grandTotal = total + deliveryFee;
 
   return (
     <>
@@ -91,7 +91,7 @@ export default function CartDrawer() {
                         <h3 className="text-sm font-semibold text-black leading-snug mb-1 line-clamp-2" style={{ fontFamily: "Playfair Display, serif" }}>
                           {isAr && item.nameAr ? item.nameAr : item.name}
                         </h3>
-                        <p className="text-[#D39C16] font-bold text-sm">{item.price} MAD</p>
+                        {/* <p className="text-[#D39C16] font-bold text-sm">{item.price} MAD</p> */}
                         {/* Quantity */}
                         <div className="flex items-center gap-2 mt-2">
                           <button
@@ -116,7 +116,7 @@ export default function CartDrawer() {
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
-                        <p className="text-sm font-bold text-black">{item.price * item.quantity} MAD</p>
+                        {/* <p className="text-sm font-bold text-black">{item.price * item.quantity} MAD</p> */}
                       </div>
                     </div>
                   ))}
@@ -128,7 +128,7 @@ export default function CartDrawer() {
             {items.length > 0 && (
               <div className="px-6 py-5 border-t border-gray-100 bg-[#FAF6F0]">
                 {/* Delivery */}
-                <div className="space-y-2 mb-4">
+                {/* <div className="space-y-2 mb-4">
                   <div className="flex justify-between text-sm text-gray-500">
                     <span>{t("subtotal")}</span>
                     <span>{total} MAD</span>
@@ -150,7 +150,7 @@ export default function CartDrawer() {
                     <span>{t("total")}</span>
                     <span className="text-[#D39C16]">{grandTotal} MAD</span>
                   </div>
-                </div>
+                </div> */}
 
                 <Link
                   href={`/${locale}/checkout`}

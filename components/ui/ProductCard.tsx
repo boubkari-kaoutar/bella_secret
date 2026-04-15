@@ -169,9 +169,9 @@ export default function ProductCard({
 
             {/* Prix + bouton + */}
             <div className="flex items-center justify-between pt-2.5 border-t border-gray-50">
-              <span className="font-bold text-base text-black" style={{ fontFamily: "Playfair Display, serif" }}>
+              {/* <span className="font-bold text-base text-black" style={{ fontFamily: "Playfair Display, serif" }}>
                 {product.price} <span className="text-xs font-semibold text-gray-500">MAD</span>
-              </span>
+              </span> */}
               <button
                 onClick={handleAdd}
                 className="flex items-center justify-center w-9 h-9 rounded-2xl bg-black text-white hover:bg-[#D39C16] transition-colors duration-200 shadow-sm"
