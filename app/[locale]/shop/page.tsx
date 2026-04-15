@@ -122,16 +122,15 @@ export default function ShopPage() {
           <p style={{ color: "#9CA3AF", fontSize: "13px", marginBottom: "24px" }}>
             {filtered.length} {filtered.length > 1 ? t("count_many") : t("count_one")}
           </p>
-          <motion.div
-            layout
+          <div
             style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "20px" }}
           >
             {filtered.map((product) => (
-              <motion.div key={product.id} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+              <div key={product.id}>
                 <ProductCard product={product} locale={locale} buyLabel={t("buyNow")} />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
