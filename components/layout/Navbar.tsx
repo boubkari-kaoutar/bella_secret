@@ -13,7 +13,6 @@ import { useCart } from "@/context/CartContext";
 const links = [
   { key: "home", href: "/" },
   { key: "about", href: "/about" },
-  { key: "shop", href: "/shop" },
   { key: "blog", href: "/blog" },
   { key: "reseller", href: "/reseller" },
   { key: "contact", href: "/contact" },
