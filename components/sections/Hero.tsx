@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
@@ -182,7 +183,6 @@ export default function Hero() {
             {[
               { value: t("stat1_value"), label: t("stat1_label") },
               { value: t("stat2_value"), label: t("stat2_label") },
-              { value: t("stat3_value"), label: t("stat3_label") },
             ].map((stat, i) => (
               <div key={stat.label} className="hero-stats opacity-0">
                 {i > 0 && (
@@ -203,6 +203,33 @@ export default function Hero() {
                 <p className="text-white/40 text-xs uppercase tracking-widest mt-0.5">{stat.label}</p>
               </div>
             ))}
+
+            {/* AMMPS stat avec logo */}
+            <div className="hero-stats opacity-0 flex items-center gap-3">
+              <div className="hidden sm:block w-px h-6 bg-white/15 mr-5" />
+              <Image
+                src="/images/mmps.png"
+                alt="AMMPS"
+                width={44}
+                height={44}
+                className="object-contain"
+              />
+              <div>
+                <p className="text-white/40 text-xs uppercase tracking-widest">{t("stat3_label")}</p>
+                <p
+                  className="text-lg font-bold"
+                  style={{
+                    fontFamily: "Playfair Display, serif",
+                    background: "linear-gradient(135deg, #EBD060, #D39C16)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {t("stat3_value")}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
