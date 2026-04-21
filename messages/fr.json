@@ -8,9 +8,12 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "100% Naturel • Certifié MMPS",
+    "badge": "100% Naturel • Certifié AMMPS",
+    "badge_micro": "Microalgues & Extraits végétaux",
+    "badge_cert": "Certifié AMMPS",
     "title1": "Cosmétiques naturels",
     "title2": "enrichis en microalgues",
+    "title3": "et extraits végétaux",
     "subtitle": "Découvrez des cosmétiques 100% naturels, enrichis en microalgues et extraits végétaux, pour nourrir, protéger et sublimer votre peau et vos cheveux. Des soins conçus avec passion et science, pour une beauté saine et éclatante au quotidien.",
     "cta": "Découvrir la boutique",
     "cta2": "Notre histoire",
@@ -18,7 +21,7 @@
     "stat1_label": "Naturel",
     "stat2_value": "6 ans",
     "stat2_label": "De recherche",
-    "stat3_value": "MMPS",
+    "stat3_value": "AMMPS",
     "stat3_label": "Certifié"
   },
   "why": {
@@ -28,7 +31,7 @@
     "subtitle": "Des formules naturelles et certifiées, ancrées dans le patrimoine marocain.",
     "certified": "Certifiés pour votre confiance, créés pour votre plaisir",
     "mmps_name": "Agence Marocaine des",
-    "mmps_sub": "Médicaments et Produits de Santé",
+    "mmps_sub": "Médicaments et Produits de Santé (AMMPS)",
     "items": [
       { "icon": "leaf", "title": "Ingrédients naturels & bio", "desc": "Formules pures, sans parabènes ni silicones" },
       { "icon": "flask", "title": "Innovation & science", "desc": "6 ans de recherche sur les microalgues" },
@@ -55,7 +58,7 @@
     "years_label": "ans de recherche",
     "point1": "Recherche biotechnologique approfondie",
     "point2": "Ingrédients 100% naturels & patrimoine marocain",
-    "point3": "Contrôle qualité certifié MMPS"
+    "point3": "Contrôle qualité certifié AMMPS"
   },
   "testimonials": {
     "badge": "Témoignages",
@@ -101,11 +104,12 @@
     "founder_role": "Fondatrice – Bella Secret",
     "cta_shop": "Découvrir nos soins",
     "timeline_events": [
-      { "year": "2017", "title": "Début de la recherche", "desc": "Salma commence ses recherches sur les microalgues à l'université." },
-      { "year": "2019", "title": "Découverte clé", "desc": "Identification des propriétés cosmétiques uniques de la spiruline marocaine." },
-      { "year": "2021", "title": "Développement des formules", "desc": "Création des premières formules en associant science et ingrédients traditionnels." },
-      { "year": "2023", "title": "Certification MMPS", "desc": "Obtention de la certification officielle pour tous les produits Bella Secret." },
-      { "year": "2024", "title": "Lancement de Bella Secret", "desc": "Naissance officielle de Bella Secret – Nature House, avec amour et passion." }
+      { "year": "2017", "title": "Naissance d'une passion", "desc": "Salma fait ses premiers pas en contrôle qualité." },
+      { "year": "2019-2020", "title": "Éveil des sens naturels", "desc": "Découverte de la fabrication cosmétique et de l'aromathérapie." },
+      { "year": "2021", "title": "Voyage au cœur des microalgues", "desc": "Début de la recherche sur la valorisation des microalgues." },
+      { "year": "2023", "title": "Création des premiers soins", "desc": "Naissance des premières Formulations Bella Secret." },
+      { "year": "2025", "title": "Rêve devenu réalité", "desc": "Lancement officiel de la marque." },
+      { "year": "2026", "title": "Reconnaissance et engagement", "desc": "Déclaration officielle auprès de l'AMMPS." }
     ],
     "values": [
       { "title": "Naturalité", "desc": "Des soins 100% naturels, sans produits chimiques." },
@@ -187,7 +191,7 @@
     "message": "Votre message",
     "submit": "Envoyer",
     "whatsapp": "Contacter sur WhatsApp",
-    "phone": "+212 762 627 500",
+    "phone": "+212 771 010 999",
     "address": "Maroc",
     "label_phone": "Téléphone",
     "label_email": "Email",

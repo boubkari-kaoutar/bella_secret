@@ -32,8 +32,8 @@ export default function Footer() {
               <Image
                 src="/images/LOGO-1.png"
                 alt="Bella Secret"
-                width={50}
-                height={50}
+                width={72}
+                height={72}
                 className="object-contain"
               />
               <div>
@@ -67,7 +67,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href={`https://wa.me/212762627500`}
+                href={`https://wa.me/212771010999`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-[#25D366] hover:border-[#25D366] transition-colors"
@@ -105,11 +105,11 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-gray-600 text-sm">
                 <Phone className="w-4 h-4 mt-0.5 text-[#D39C16] flex-shrink-0" />
-                <span>+212 762 627 500</span>
+                <span>+212 771 010 999</span>
               </li>
               <li className="flex items-start gap-2.5 text-gray-600 text-sm">
                 <Mail className="w-4 h-4 mt-0.5 text-[#D39C16] flex-shrink-0" />
-                <span>contact@bellasecret.ma</span>
+                <span>bella.secretnature@gmail.com</span>
               </li>
               <li className="flex items-start gap-2.5 text-gray-600 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 text-[#D39C16] flex-shrink-0" />

@@ -131,7 +131,7 @@ export default function Hero() {
           </div>
 
           {/* Title line 2 — gold gradient */}
-          <div className="overflow-hidden mb-8">
+          <div className="overflow-hidden mb-1">
             <h1
               className="hero-title-line opacity-0 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
               style={{
@@ -143,6 +143,22 @@ export default function Hero() {
               }}
             >
               {t("title2")}
+            </h1>
+          </div>
+
+          {/* Title line 3 — gold gradient */}
+          <div className="overflow-hidden mb-8">
+            <h1
+              className="hero-title-line opacity-0 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+              style={{
+                fontFamily: "Playfair Display, serif",
+                background: "linear-gradient(135deg, #EBD060 0%, #D39C16 60%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              {t("title3")}
             </h1>
           </div>
 

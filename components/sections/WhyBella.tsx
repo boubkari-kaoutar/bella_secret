@@ -117,7 +117,7 @@ export default function WhyBella() {
             <div className="left-anim opacity-0">
               <p className="text-gray-400 text-[10px] uppercase tracking-widest mb-4">{t("certified")}</p>
               <div className="inline-flex items-center gap-4 bg-[#FAF6F0] rounded-2xl px-6 py-4 border border-gray-100">
-                <img src="/images/mmps.png" alt="MMPS" className="h-10 object-contain" />
+                <img src="/images/mmps.png" alt="AMMPS" className="h-10 object-contain" />
                 <div className="border-l border-gray-200 pl-4">
                   <p className="text-xs font-semibold text-black">{t("mmps_name")}</p>
                   <p className="text-xs text-gray-400">{t("mmps_sub")}</p>

@@ -294,7 +294,7 @@ export default function AboutClient() {
                   <div className="flex-1 hidden md:block" />
 
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#EBD060] text-black flex items-center justify-center font-bold text-sm z-10">
-                    {event.year.slice(2)}
+                    {event.year.slice(2, 4)}
                   </div>
 
                   <div className={`flex-1 bg-[#FAF6F0] border border-gray-100 rounded-2xl p-5 ${i % 2 !== 0 ? "md:text-right" : ""}`}>

@@ -28,7 +28,7 @@ const labelStyle: React.CSSProperties = {
   marginBottom: "4px",
 };
 
-const WHATSAPP_NUMBER = "212762627500";
+const WHATSAPP_NUMBER = "212771010999";
 
 export default function ContactPage() {
   const t = useTranslations("contact");
@@ -46,8 +46,8 @@ export default function ContactPage() {
   };
 
   const infos = [
-    { icon: Phone, label: t("label_phone"), value: t("phone"), href: "tel:+212762627500" },
-    { icon: Mail, label: t("label_email"), value: "contact@bellasecret.ma", href: "mailto:contact@bellasecret.ma" },
+    { icon: Phone, label: t("label_phone"), value: t("phone"), href: "tel:+212771010999" },
+    { icon: Mail, label: t("label_email"), value: "bella.secretnature@gmail.com", href: "mailto:bella.secretnature@gmail.com" },
     { icon: MapPin, label: t("label_address"), value: t("address"), href: "#" },
   ];
 

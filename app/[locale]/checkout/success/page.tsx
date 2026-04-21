@@ -57,7 +57,7 @@ export default function CheckoutSuccessPage() {
             {t("success_continue")}
           </Link>
           <a
-            href="https://wa.me/212762627500"
+            href="https://wa.me/212771010999"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full border border-[#25D366] text-[#25D366] font-semibold py-3.5 rounded-full text-sm hover:bg-[#25D366]/5 transition-colors flex items-center justify-center gap-2"

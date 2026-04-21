@@ -86,8 +86,8 @@ export default function Navbar() {
                 <Image
                   src="/images/LOGO-1.png"
                   alt="Bella Secret"
-                  width={40}
-                  height={40}
+                  width={64}
+                  height={64}
                   className="object-contain"
                 />
               </motion.div>

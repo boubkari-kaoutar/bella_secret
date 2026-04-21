@@ -141,7 +141,7 @@ export default function ShopPage() {
         </h2>
         <p style={{ color: "#6B7280", marginBottom: "24px", fontSize: "14px" }}>{t("cta_sub")}</p>
         <motion.a
-          href="https://wa.me/212762627500?text=Bonjour%20Bella%20Secret"
+          href="https://wa.me/212771010999?text=Bonjour%20Bella%20Secret"
           target="_blank" rel="noopener noreferrer"
           whileHover="hover"
           initial="rest"

@@ -83,7 +83,7 @@ export default function CheckoutPage() {
       .filter((line) => line !== "")
       .join("\n");
 
-    const whatsappUrl = `https://wa.me/212762627500?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/212771010999?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
     clearCart();

@@ -25,7 +25,7 @@ export default function ResellerPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `*Demande Revendeur — Bella Secret*\n\n👤 *Nom:* ${form.name}\n🏪 *Boutique/Société:* ${form.company}\n📍 *Ville:* ${form.city}\n📞 *Téléphone:* ${form.phone}\n📧 *Email:* ${form.email}\n\n💬 *Message:*\n${form.message}`;
-    window.open(`https://wa.me/212762627500?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(`https://wa.me/212771010999?text=${encodeURIComponent(text)}`, "_blank");
     setSubmitted(true);
   };
 
